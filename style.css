@@ -5,5 +5,10 @@ Version: 1.0
 */
 
 p {
-  color: aqua;
+  color: rgb(47, 128, 0);
+}
+
+a{
+  text-decoration: none;
+  color: purple;
 }

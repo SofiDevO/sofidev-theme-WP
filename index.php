@@ -1,10 +1,12 @@
-<?php
-  function greet($name, $petName){
-    echo "<p>Hi, my name is $name and I like $petName</p>";
-  }
-  greet("Sofi", "cats");
-  greet("Angie", "Snakes");
+<?php get_header();?>
 
+<?php
+  while(have_posts()){
+    the_post(); ?>
+    <h2><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
+    <?php the_content(); ?>
+    <hr>
+  <?php }
 ?>
-<h1><?php blogInfo('name') ?></h1>
-<p><?php blogInfo("description")?></p>
+
+<?php get_footer() ?>
