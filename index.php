@@ -1,6 +1,6 @@
 <?php get_header();?>
 
-<main>
+
 
   <?php
 
@@ -11,5 +11,5 @@ while(have_posts()){
   <hr>
   <?php }
 ?>
-</main>
+
 <?php get_footer() ?>

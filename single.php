@@ -1,7 +1,7 @@
 
 <?php get_header();?>
 
-<main>
+
 
   <?php
 get_header();
@@ -13,6 +13,6 @@ while (have_posts()) {
     <?php }
   get_footer();
   ?>
-  </main>
+
 
   <?php get_footer() ?>

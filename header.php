@@ -14,9 +14,12 @@
     <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
-    <?php wp_body_open( )?>
+    <?php
+        if(function_exists('wp_body_open')){
+            wp_body_open();
+        }
+    ?>
 <header>
-    <a href="<?php the_permalink( ); ?>">
-        <h2 class="logo"><?php the_embed_site_title();?></h2>
-    </a>
+    <?php get_template_part('/template-parts/header/nav'); ?>
 </header>
+<main>

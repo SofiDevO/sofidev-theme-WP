@@ -15,7 +15,7 @@
  * License:           GNU General Public License v2.0 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
-
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 
 html{
@@ -26,6 +26,7 @@ html{
 body{
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 li{
@@ -37,6 +38,9 @@ h1{
 h2{
   font-size: 2.4rem;
 }
+h3{
+  font-size: 1.8rem;
+}
 p {
   font-size: 1.6rem;
 
@@ -46,23 +50,21 @@ a{
   text-decoration: none;
   color: rgb(0, 165, 165);
 }
-
-header{
-  background: #000000d4;
-    padding: 0px 15px;
-    display: flex;
-    align-items: center;
-    backdrop-filter: blur(13px);
-    position: fixed;
-    width: 100%;
-}
-.logo a{
+pre{
   display: flex;
-  align-items: center;
-  gap: 14px;
-  color: white;
-}
+  justify-content: center;
 
-main{
-  padding-top: 77px;
+}
+strong{
+  color: aqua;
+  font-weight: 400;
+}
+code{
+  font-size: 1.5rem;
+  padding: 1rem;
+  width: 80%;
+  border-radius: 15px;
+  background: rgb(44, 44, 44);
+  align-self: center;
+  color: rgb(2, 182, 2);
 }

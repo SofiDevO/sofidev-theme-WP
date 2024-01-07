@@ -7,6 +7,7 @@
 */
 ?>
 
+</main>
 
 <h2>Hello from footer</h2>
 
