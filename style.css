@@ -1,14 +1,68 @@
-/*
-Theme Name: SofiDev oficial Theme
-Author: SofiDev
-Version: 1.0
-*/
 
+/*
+ * Theme Name:        SofiDev
+ * Theme URI:         https://example.com/fabled-sunset
+ * Description:       SofiDev oficial theme for wordpress
+ * Version:           1.0.0
+ * Author:            SofiDev
+ * Author URI:        https://example.com
+ * Tags:              portfolio, full-site-editing
+ * Text Domain:       Sofidev
+ * Domain Path:       /assets/lang
+ * Tested up to:      6.4
+ * Requires at least: 6.2
+ * Requires PHP:      7.4
+ * License:           GNU General Public License v2.0 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+
+
+html{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+h1{
+  font-size:3rem;
+}
+h2{
+  font-size: 2.4rem;
+}
 p {
-  color: rgb(47, 128, 0);
+  font-size: 1.6rem;
+
 }
 
 a{
   text-decoration: none;
-  color: purple;
+  color: rgb(0, 165, 165);
+}
+
+header{
+  background: #000000d4;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(13px);
+    position: fixed;
+    width: 100%;
+}
+.logo a{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: white;
+}
+
+main{
+  padding-top: 77px;
 }
