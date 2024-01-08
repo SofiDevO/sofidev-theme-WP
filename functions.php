@@ -10,12 +10,14 @@
     wp_register_style('header-styles', get_template_directory_uri(). '/assets/src/library/styles/header-styles.css', [], false, 'all');
     //Register Scripts
     wp_register_script('main-js', get_template_directory_uri(). '/assets/main.js', [], filemtime(get_template_directory(). '/assets/main.js'), true );
+    wp_register_script('hamburger-js', get_template_directory_uri(). '/assets/controllers/hamburger.js', [], filemtime(get_template_directory(). '/assets/controllers/hamburger.js'), true );
 
     //Enqueue styles
     wp_enqueue_style('sofi_main_styles');
     wp_enqueue_style('header-styles');
     //Enqueue styles
     wp_enqueue_script('main-js');
+    wp_enqueue_script('hamburger-js');
 
 }
     add_action('wp_enqueue_scripts', 'sofidev_files');
