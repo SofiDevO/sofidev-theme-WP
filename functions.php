@@ -20,7 +20,7 @@
     wp_enqueue_script('hamburger-js');
 
 }
-    add_action('wp_enqueue_scripts', 'sofidev_files');
+add_action('wp_enqueue_scripts', 'sofidev_files');
 
 
 
@@ -30,9 +30,12 @@
 
 
 if (!function_exists('custom_theme_features')) {
+
     // Register Theme Features
     function custom_theme_features()
     {
+
+
 
         // Add theme support for Automatic Feed Links
         add_theme_support('automatic-feed-links');
@@ -72,4 +75,15 @@ if (!function_exists('custom_theme_features')) {
         add_editor_style();
     }
     add_action('after_setup_theme', 'custom_theme_features');
+
+    function SofiDev_custom_logo_setup() {
+        $defaults = array(
+            'flex-height'          => true,
+            'flex-width'           => true,
+            'header-text'          => array( 'site-title', 'site-description' ),
+            'unlink-homepage-logo' => true,
+        );
+        add_theme_support( 'custom-logo', $defaults );
+    }
+    add_action( 'after_setup_theme', 'SofiDev_custom_logo_setup' );
 }

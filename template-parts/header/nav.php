@@ -8,8 +8,14 @@
 <div class="logo">
         <?php the_custom_logo(); ?>
         <a  class="link__logo" href="<?php echo get_home_url(); ?>">
-            <h2 ><?php bloginfo('name');?></h2>
-            <span ><?php bloginfo( 'description' );?></span>
+            <?php
+            if (display_header_text()==true){
+                echo '<h2>'.get_bloginfo( 'name' ) .'</h2>';
+                echo '<span>'.get_bloginfo('description').'</span>';
+            } else{
+                  echo "";
+            }
+          ?>
 
         </a>
     </div>
