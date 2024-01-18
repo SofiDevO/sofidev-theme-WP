@@ -17,7 +17,6 @@ const panelActive = d.querySelector(".header__nav__menu");
         };
         if(panelActive.classList.contains("is-active")){
             header.classList.remove("blur")
-            console.log("holi")
         }else{
             header.classList.add("blur")
         }

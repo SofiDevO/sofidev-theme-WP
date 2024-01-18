@@ -3,14 +3,20 @@
 *Theme Functions
 *
 *@package SofiDev-theme
-*/ function sofidev_files()
+*/
+
+
+
+
+//Links CSS JS:
+function sofidev_files()
 {
     //Register Styles
-    wp_register_style('sofi_main_styles', get_stylesheet_uri(), [], filemtime(get_template_directory(). '/style.css'), 'all');
-    wp_register_style('header-styles', get_template_directory_uri(). '/assets/src/library/styles/header-styles.css', [], false, 'all');
+    wp_register_style('sofi_main_styles', get_stylesheet_uri(), [], filemtime(get_template_directory() . '/style.css'), 'all');
+    wp_register_style('header-styles', get_template_directory_uri() . '/assets/src/library/styles/header-styles.css', [], false, 'all');
     //Register Scripts
-    wp_register_script('main-js', get_template_directory_uri(). '/assets/main.js', [], filemtime(get_template_directory(). '/assets/main.js'), true );
-    wp_register_script('hamburger-js', get_template_directory_uri(). '/assets/controllers/hamburger.js', [], filemtime(get_template_directory(). '/assets/controllers/hamburger.js'), true );
+    wp_register_script('main-js', get_template_directory_uri() . '/assets/main.js', [], filemtime(get_template_directory() . '/assets/main.js'), true);
+    wp_register_script('hamburger-js', get_template_directory_uri() . '/assets/controllers/hamburger.js', [], filemtime(get_template_directory() . '/assets/controllers/hamburger.js'), true);
 
     //Enqueue styles
     wp_enqueue_style('sofi_main_styles');
@@ -18,20 +24,47 @@
     //Enqueue styles
     wp_enqueue_script('main-js');
     wp_enqueue_script('hamburger-js');
-
 }
 add_action('wp_enqueue_scripts', 'sofidev_files');
 
+//CUSTOMIZER BG COLOR:
+function dofast_customize_register($wp_customize){
+    $wp_customize->add_section("bg_color", array(
+        "title"=> __(" Body Background Color","dofast"),
+        "priority"=> 1,
+    ));
+    $wp_customize->add_setting("body_bg", array(
+        "default"=> "#fff",
+        "transport"=> "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
+        "body_background_color", array(
+            "label"=> __("Body bg color","dofaset"),
+            "section"=> "bg_color",
+            "settings"=> "body_bg",
+        ))) ;
+}
+add_action("customize_register","dofast_customize_register");
+
+function dofast_customize_css(){
+    ?>
+    <style>
+        body{
+            background-color: <?php echo get_theme_mod( "body_bg", '#fff'); ?> ;
+        }
+    </style>
+    <?php
+}
+add_action("wp_head",'dofast_customize_css');
 
 
 
 
-
-
-
+//Theme Support:
 if (!function_exists('custom_theme_features')) {
-
     // Register Theme Features
+
+
     function custom_theme_features()
     {
 
@@ -56,7 +89,7 @@ if (!function_exists('custom_theme_features')) {
             'uploads'                => true,
             'random-default'         => true,
             'header-text'            => true,
-            'default-text-color'     => '',
+            'default-text-color'     => '#000',
             'wp-head-callback'       => '',
             'admin-head-callback'    => '',
             'admin-preview-callback' => '',
@@ -76,14 +109,15 @@ if (!function_exists('custom_theme_features')) {
     }
     add_action('after_setup_theme', 'custom_theme_features');
 
-    function SofiDev_custom_logo_setup() {
+    function SofiDev_custom_logo_setup()
+    {
         $defaults = array(
             'flex-height'          => true,
             'flex-width'           => true,
-            'header-text'          => array( 'site-title', 'site-description' ),
+            'header-text'          => array('site-title', 'site-description'),
             'unlink-homepage-logo' => true,
         );
-        add_theme_support( 'custom-logo', $defaults );
+        add_theme_support('custom-logo', $defaults);
     }
-    add_action( 'after_setup_theme', 'SofiDev_custom_logo_setup' );
+    add_action('after_setup_theme', 'SofiDev_custom_logo_setup');
 }
