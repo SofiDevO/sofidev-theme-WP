@@ -8,7 +8,7 @@
 
 
 
-//Links CSS JS:
+//Links CSS, JS:
 function sofidev_files()
 {
     //Register Styles
@@ -27,8 +27,9 @@ function sofidev_files()
 }
 add_action('wp_enqueue_scripts', 'sofidev_files');
 
-//CUSTOMIZER BG COLOR:
+//CUSTOMIZER
 function dofast_customize_register($wp_customize){
+    //Bg-Color
     $wp_customize->add_section("bg_color", array(
         "title"=> __(" Body Background Color","dofast"),
         "priority"=> 1,
@@ -43,14 +44,36 @@ function dofast_customize_register($wp_customize){
             "section"=> "bg_color",
             "settings"=> "body_bg",
         ))) ;
+        //Text color
+        $wp_customize->add_section("txt_color", array(
+            "title"=> __(" Body text Color","dofast"),
+            "priority"=> 2,
+        ));
+        $wp_customize->add_setting("body_text", array(
+            "default"=> "#000",
+            "transport"=> "refresh",
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
+            "body_text_color", array(
+                "label"=> __("Body text color","dofaset"),
+                "section"=> "txt_color",
+                "settings"=> "body_text",
+            ))) ;
 }
 add_action("customize_register","dofast_customize_register");
+
+
+
+
 
 function dofast_customize_css(){
     ?>
     <style>
         body{
             background-color: <?php echo get_theme_mod( "body_bg", '#fff'); ?> ;
+        }
+        p{
+            color: <?php  echo get_theme_mod( "body_text", '#000'); ?>;
         }
     </style>
     <?php
