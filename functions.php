@@ -5,9 +5,6 @@
 *@package SofiDev-theme
 */
 
-
-
-
 //Links CSS, JS:
 function sofidev_files()
 {
@@ -59,12 +56,69 @@ function dofast_customize_register($wp_customize){
                 "section"=> "txt_color",
                 "settings"=> "body_text",
             ))) ;
+            //h1 color
+        $wp_customize->add_section("h1_color", array(
+            "title"=> __(" h1  Color","dofast"),
+            "priority"=> 3,
+        ));
+        $wp_customize->add_setting("h1_color", array(
+            "default"=> "#000",
+            "transport"=> "refresh",
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
+            "h1_color_color", array(
+                "label"=> __("h1  color","dofaset"),
+                "section"=> "h1_color",
+                "settings"=> "h1_color",
+            ))) ;
+            //h2 color
+        $wp_customize->add_section("h2_color", array(
+            "title"=> __(" h2  Color","dofast"),
+            "priority"=> 4,
+        ));
+        $wp_customize->add_setting("h2_color", array(
+            "default"=> "#000",
+            "transport"=> "refresh",
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
+            "h2_color_color", array(
+                "label"=> __("h2  color","dofaset"),
+                "section"=> "h2_color",
+                "settings"=> "h2_color",
+            ))) ;
+            //h3 color
+        $wp_customize->add_section("h3_color", array(
+            "title"=> __(" h3  Color","dofast"),
+            "priority"=> 5,
+        ));
+        $wp_customize->add_setting("h3_color", array(
+            "default"=> "#000",
+            "transport"=> "refresh",
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
+            "h3_color", array(
+                "label"=> __("h3  color","dofaset"),
+                "section"=> "h3_color",
+                "settings"=> "h3_color",
+            ))) ;
+            //link color
+        $wp_customize->add_section("link_color", array(
+            "title"=> __(" Links  Color","dofast"),
+            "priority"=> 6,
+        ));
+        $wp_customize->add_setting("link_color", array(
+            "default"=> "#04c7c7",
+            "transport"=> "refresh",
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
+            "link_color_color", array(
+                "label"=> __("Links  color","dofaset"),
+                "section"=> "link_color",
+                "settings"=> "link_color",
+            ))) ;
+
 }
 add_action("customize_register","dofast_customize_register");
-
-
-
-
 
 function dofast_customize_css(){
     ?>
@@ -75,12 +129,24 @@ function dofast_customize_css(){
         p{
             color: <?php  echo get_theme_mod( "body_text", '#000'); ?>;
         }
+        h1{
+            color: <?php  echo get_theme_mod( "h1_color", '#000'); ?>;
+        }
+        h2{
+            color: <?php  echo get_theme_mod( "h2_color", '#000'); ?>;
+        }
+        h3{
+            color: <?php  echo get_theme_mod( "h3_color", '#000'); ?>;
+        }
+        a{
+            color: <?php  echo get_theme_mod( "link_color", '#04c7c7'); ?>;
+        }
+
+
     </style>
     <?php
 }
 add_action("wp_head",'dofast_customize_css');
-
-
 
 
 //Theme Support:
