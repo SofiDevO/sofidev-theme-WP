@@ -1,6 +1,6 @@
 # SofiDev Portfolio WordPress Theme
 
-![SofiDev Portfolio](link_to_screenshot.png)
+
 
 Elevate your online presence with SofiDev Portfolio, an exclusive and elegant WordPress theme designed to showcase your talent and creativity. Officially developed by SofiDev, this theme offers a unique Full Site Editing experience, allowing you to customize every aspect of your site easily and visually.
 
