@@ -1,12 +1,14 @@
 <?php get_header(); ?>
-<?php
 
+
+<div class="posts__container">
+  <?php
 while (have_posts()) {
   the_post(); ?>
-  <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-  <?php the_content_feed(); ?>
-  <hr>
+    <?php get_template_part('/template-parts/home/post-cards'); ?>
 
-<?php }
+    <?php }
 ?>
+</div>
+
 <?php get_footer() ?>

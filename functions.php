@@ -10,7 +10,8 @@ function sofidev_files()
 {
     //Register Styles
     wp_register_style('sofi_main_styles', get_stylesheet_uri(), [], filemtime(get_template_directory() . '/style.css'), 'all');
-    wp_register_style('header-styles', get_template_directory_uri() . '/assets/src/library/styles/header-styles.css', [], false, 'all');
+    wp_register_style('header-styles', get_template_directory_uri() . '/assets/styles/header-styles.css', [], false, 'all');
+    wp_register_style('post-card', get_template_directory_uri() . '/assets/styles/post-card.css', [], false, 'all');
     //Register Scripts
     wp_register_script('main-js', get_template_directory_uri() . '/assets/main.js', [], filemtime(get_template_directory() . '/assets/main.js'), true);
     wp_register_script('hamburger-js', get_template_directory_uri() . '/assets/controllers/hamburger.js', [], filemtime(get_template_directory() . '/assets/controllers/hamburger.js'), true);
@@ -18,6 +19,7 @@ function sofidev_files()
     //Enqueue styles
     wp_enqueue_style('sofi_main_styles');
     wp_enqueue_style('header-styles');
+    wp_enqueue_style('post-card');
     //Enqueue styles
     wp_enqueue_script('main-js');
     wp_enqueue_script('hamburger-js');
