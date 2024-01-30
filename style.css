@@ -1,12 +1,11 @@
-
 /*
  * Theme Name:        SofiDev Portfolio
  * Theme URI:         https://example.com/fabled-sunset
- * Description:       SofiDev oficial theme for wordpress
+ * Description:       Elevate your online presence with SofiDev Portfolio, an exclusive and elegant theme designed to showcase your talent and creativity. Officially developed by SofiDev, this WordPress theme offers a unique Full Site Editing experience, allowing you to customize every aspect of your site easily and visually.
  * Version:           1.0.0
  * Author:            SofiDev
  * Author URI:        https://itssofi.dev/
- * Tags:              portfolio, full-site-editing
+ * Tags:              portfolio, full-site-editing, creative, showcase, personal branding
  * Text Domain:       Sofidev
  * Domain Path:       /assets/lang
  * Tested up to:      6.4
@@ -14,7 +13,23 @@
  * Requires PHP:      7.4
  * License:           GNU General Public License v2.0 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * SofiDev Portfolio is more than just a theme; it's your platform to showcase your work uniquely. With its Full Site Editing capabilities, you can effortlessly customize every section of your site, from the homepage to project and contact sections. Impress your visitors with a modern and responsive design tailored to showcase your portfolio stunningly.
+ *
+ * Key Features:
+ * - Full Site Editing for visual customization.
+ * - Modern and responsive design for an optimal experience on all devices.
+ * - Specific sections to highlight your projects and achievements.
+ * - Seamless integration with the latest WordPress versions.
+ *
+ * This theme is entirely free! If you like it and want to support my work, consider making a donation:
+ * - [PayPal](https://paypal.me/ansof89?country.x=MX&locale.x=es_XC)
+ * - [Ko-fi](https://ko-fi.com/sofidev)
+ *
+ * Download SofiDev Portfolio today and elevate your online presence to a new level.
  */
+
+
  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 
