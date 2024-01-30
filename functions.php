@@ -149,6 +149,18 @@ function dofast_customize_css(){
 add_action("wp_head",'dofast_customize_css');
 
 
+
+//menu support
+function register_my_menus() {
+    register_nav_menus(
+      array(
+        'header-menu' => __( 'Header Menu' ),
+        'extra-menu' => __( 'Extra Menu' )
+       )
+     );
+   }
+   add_action( 'init', 'register_my_menus' );
+
 //Theme Support:
 if (!function_exists('custom_theme_features')) {
     // Register Theme Features
@@ -156,8 +168,6 @@ if (!function_exists('custom_theme_features')) {
 
     function custom_theme_features()
     {
-
-
 
         // Add theme support for Automatic Feed Links
         add_theme_support('automatic-feed-links');
@@ -210,3 +220,24 @@ if (!function_exists('custom_theme_features')) {
     }
     add_action('after_setup_theme', 'SofiDev_custom_logo_setup');
 }
+
+
+/* Quitar opciones del personalizador de WordPress */
+function remove_options_customizer( $wp_customize ) {
+    $wp_customize->remove_section( 'static_front_page' ); // Ajustes de portada
+    $wp_customize->remove_section( 'header_image' ); // Imagen de cabecera
+    $wp_customize->remove_section( 'background_image' ); // Imagen de fondo
+    $wp_customize->remove_section( 'themes' ); // Temas
+    $wp_customize->remove_section( 'featured_content' ); // Contenido destacado
+    $wp_customize->remove_section( 'colors' ); // Colores
+
+
+    // Secciones específicas de Genesis
+	$wp_customize->remove_section( 'genesis_updates' ); // Sección de Actualizaciones
+    $wp_customize->remove_section( 'genesis_adsense' ); // Sección de Google Adsense
+    $wp_customize->remove_section( 'genesis_breadcrumbs' ); // Sección Migas de pan
+    $wp_customize->remove_section( 'genesis_comments' ); // Sección Comentarios y Referencias
+    $wp_customize->remove_section( 'genesis_scripts' ); // Sección Header/Footer Scripts
+    $wp_customize->remove_panel( 'genesis-seo' ); // Panel de SEO
+}
+add_action( 'customize_register', 'remove_options_customizer', 30);
