@@ -35,6 +35,6 @@ SofiDev Portfolio is licensed under the [GNU General Public License v2.0 or late
 ## Get Started
 
 Download SofiDev Portfolio today and elevate your online presence to a new level.
-[Download latest ZIP version](https://github.com/SofiDevO/sofidev-theme-WP/vX.X.X.zip)
+[Download latest ZIP version](https://github.com/SofiDevO/sofidev-theme-WP/.zip)
 
 <!-- [Demo Link](https://example.com/fabled-sunset) | [SofiDev's Website](https://itssofi.dev/) -->
