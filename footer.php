@@ -8,9 +8,7 @@
 ?>
 
 </main>
-
-<h2>Hello from footer</h2>
-
+<?php get_template_part('/template-parts/footer/footer-template'); ?>
 <?php wp_footer();?>
 </body>
 </html>
