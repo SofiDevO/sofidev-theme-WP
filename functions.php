@@ -30,238 +30,329 @@ add_action('wp_enqueue_scripts', 'sofidev_files');
 
 //CUSTOMIZER
 /* Quitar opciones del personalizador de WordPress */
-function remove_options_customizer( $wp_customize ) {
-    $wp_customize->remove_section( 'static_front_page' ); // Ajustes de portada
-    $wp_customize->remove_section( 'header_image' ); // Imagen de cabecera
-    $wp_customize->remove_section( 'background_image' ); // Imagen de fondo
-    $wp_customize->remove_section( 'themes' ); // Temas
-    $wp_customize->remove_section( 'featured_content' ); // Contenido destacado
-    $wp_customize->remove_section( 'colors' ); // Colores
+function remove_options_customizer($wp_customize)
+{
+    $wp_customize->remove_section('static_front_page'); // Ajustes de portada
+    $wp_customize->remove_section('header_image'); // Imagen de cabecera
+    $wp_customize->remove_section('background_image'); // Imagen de fondo
+    $wp_customize->remove_section('themes'); // Temas
+    $wp_customize->remove_section('featured_content'); // Contenido destacado
+    $wp_customize->remove_section('colors'); // Colores
 
 
     // Secciones específicas de Genesis
-	$wp_customize->remove_section( 'genesis_updates' ); // Sección de Actualizaciones
-    $wp_customize->remove_section( 'genesis_adsense' ); // Sección de Google Adsense
-    $wp_customize->remove_section( 'genesis_breadcrumbs' ); // Sección Migas de pan
-    $wp_customize->remove_section( 'genesis_comments' ); // Sección Comentarios y Referencias
-    $wp_customize->remove_section( 'genesis_scripts' ); // Sección Header/Footer Scripts
-    $wp_customize->remove_panel( 'genesis-seo' ); // Panel de SEO
+    $wp_customize->remove_section('genesis_updates'); // Sección de Actualizaciones
+    $wp_customize->remove_section('genesis_adsense'); // Sección de Google Adsense
+    $wp_customize->remove_section('genesis_breadcrumbs'); // Sección Migas de pan
+    $wp_customize->remove_section('genesis_comments'); // Sección Comentarios y Referencias
+    $wp_customize->remove_section('genesis_scripts'); // Sección Header/Footer Scripts
+    $wp_customize->remove_panel('genesis-seo'); // Panel de SEO
 }
-add_action( 'customize_register', 'remove_options_customizer', 30);
+add_action('customize_register', 'remove_options_customizer', 30);
 //CUSTOMIZER blocks********
-function dofast_customize_register($wp_customize){
-     //SECTION BASIC**************
-            //panel:
-            $wp_customize->add_panel('panel_basic', array(
-                'title'=> __('Basic Colors options'),
-                'priority'=> '10',
-                'description'=> 'Theme options',
-            ));
+function dofast_customize_register($wp_customize)
+{
+    //SECTION BASIC**************
+    //panel:
+    $wp_customize->add_panel('panel_basic', array(
+        'title' => __('Basic Colors options'),
+        'priority' => '1',
+        'description' => 'Theme options',
+    ));
     //Bg-Color
     $wp_customize->add_section("bg_color", array(
-        "panel"=> "panel_basic",
-        "title"=> __(" Body Background Color","dofast"),
-        "priority"=> 1,
+        "panel" => "panel_basic",
+        "title" => __(" Body Background Color", "dofast"),
+        "priority" => 1,
     ));
     $wp_customize->add_setting("body_bg", array(
-        "default"=> "#fff",
-        "transport"=> "refresh",
+        "default" => "#fff",
+        "transport" => "refresh",
     ));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-        "body_background_color", array(
-            "label"=> __("Body bg color","dofaset"),
-            "section"=> "bg_color",
-            "settings"=> "body_bg",
-        ))) ;
-        //Text color
-        $wp_customize->add_section("txt_color", array(
-            "panel"=> "panel_basic",
-            "title"=> __(" Body text Color","dofast"),
-            "priority"=> 2,
-        ));
-        $wp_customize->add_setting("body_text", array(
-            "default"=> "#000",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "body_text_color", array(
-                "label"=> __("Body text color","dofaset"),
-                "section"=> "txt_color",
-                "settings"=> "body_text",
-            ))) ;
-            //h1 color
-        $wp_customize->add_section("h1_color", array(
-            "panel"=> "panel_basic",
-            "title"=> __(" h1  Color","dofast"),
-            "priority"=> 3,
-        ));
-        $wp_customize->add_setting("h1_color", array(
-            "default"=> "#000",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "h1_color_color", array(
-                "label"=> __("h1  color","dofaset"),
-                "section"=> "h1_color",
-                "settings"=> "h1_color",
-            ))) ;
-            //h2 color
-        $wp_customize->add_section("h2_color", array(
-            "panel"=> "panel_basic",
-            "title"=> __(" h2  Color","dofast"),
-            "priority"=> 4,
-        ));
-        $wp_customize->add_setting("h2_color", array(
-            "default"=> "#000",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "h2_color_color", array(
-                "label"=> __("h2  color","dofaset"),
-                "section"=> "h2_color",
-                "settings"=> "h2_color",
-            ))) ;
-            //h3 color
-        $wp_customize->add_section("h3_color", array(
-            "panel"=> "panel_basic",
-            "title"=> __(" h3  Color","dofast"),
-            "priority"=> 5,
-        ));
-        $wp_customize->add_setting("h3_color", array(
-            "default"=> "#000",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "h3_color", array(
-                "label"=> __("h3  color","dofaset"),
-                "section"=> "h3_color",
-                "settings"=> "h3_color",
-            ))) ;
-            //link color
-        $wp_customize->add_section("link_color", array(
-            "panel"=> "panel_basic",
-            "title"=> __(" Links  Color","dofast"),
-            "priority"=> 6,
-        ));
-        $wp_customize->add_setting("link_color", array(
-            "default"=> "#04c7c7",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "link_color_color", array(
-                "label"=> __("Links  color","dofaset"),
-                "section"=> "link_color",
-                "settings"=> "link_color",
-            ))) ;
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "body_background_color",
+        array(
+            "label" => __("Body bg color", "dofaset"),
+            "section" => "bg_color",
+            "settings" => "body_bg",
+        )
+    ));
+    //Text color
+    $wp_customize->add_section("txt_color", array(
+        "panel" => "panel_basic",
+        "title" => __("Body Text Colors", "dofast"),
+        "priority" => 2,
+    ));
+    $wp_customize->add_setting("body_text", array(
+        "default" => "#000",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "body_text_color",
+        array(
+            "label" => __("Body text color", "dofaset"),
+            "section" => "txt_color",
+            "settings" => "body_text",
+        )
+    ));
+    //h1 color
+    $wp_customize->add_setting("h1_color", array(
+        "default" => "#000",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "h1_color_color",
+        array(
+            "label" => __("h1  color", "dofaset"),
+            "section" => "txt_color",
+            "settings" => "h1_color",
+        )
+    ));
+    //h2 color
+    $wp_customize->add_setting("h2_color", array(
+        "default" => "#000",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "h2_color_color",
+        array(
+            "label" => __("h2  color", "dofaset"),
+            "section" => "txt_color",
+            "settings" => "h2_color",
+        )
+    ));
+    //h3 color
+    $wp_customize->add_setting("h3_color", array(
+        "default" => "#000",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "h3_color",
+        array(
+            "label" => __("h3  color", "dofaset"),
+            "section" => "txt_color",
+            "settings" => "h3_color",
+        )
+    ));
+    //link color
+    $wp_customize->add_setting("link_color", array(
+        "default" => "#04c7c7",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "link_color_color",
+        array(
+            "label" => __("Links  color", "dofaset"),
+            "section" => "txt_color",
+            "settings" => "link_color",
+        )
+    ));
+    //SECTION POST**************
+    //Logo color
+    $wp_customize->add_section("logo_color1", array(
+        "panel" => "panel_basic",
+        "title" => __(" Logo Gradient Colors", "dofast"),
+        "priority" => 6,
+    ));
+    $wp_customize->add_setting("logo_color1", array(
+        "default" => "#1403f7",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_setting("logo_color2", array(
+        "default" => "#01ffdd",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "logo_color1",
+        array(
+            "label" => __("Logo  color 1", "dofaset"),
+            "section" => "logo_color1",
+            "settings" => "logo_color1",
+        )
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "logo_color2",
+        array(
+            "label" => __("Logo  color 2", "dofaset"),
+            "section" => "logo_color1",
+            "settings" => "logo_color2",
+        )
+    ));
+    //tagline_color
+    $wp_customize->add_section("tagline_color", array(
+        "panel" => "panel_basic",
+        "title" => __(" Tagline Color", "dofast"),
+        "priority" => 6,
+    ));
+    $wp_customize->add_setting("tagline_color", array(
+        "default" => "#04c7c7",
+        "transport" => "refresh",
+    ));
+ $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "tagline_color",
+        array(
+            "label" => __("Tagline Color", "dofaset"),
+            "section" => "tagline_color",
+            "settings" => "tagline_color",
+        )
+    ));
 
-            //SECTION POST**************
-            //panel:
-            $wp_customize->add_panel('panel_card', array(
-                'title'=> __('Post Card options'),
-                'priority'=> '10',
-                'description'=> 'Theme options',
-            ));
-            //card title color
-        $wp_customize->add_section("card-title", array(
-            "panel"=> "panel_card",
-            "title"=> __(" Post Card Title","dofast"),
-            "priority"=> 7,
-        ));
-        $wp_customize->add_setting("card-title", array(
-            "default"=> "#04c7c7",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "card-title_color", array(
-                "label"=> __("Post Card Title","dofaset"),
-                "section"=> "card-title",
-                "settings"=> "card-title",
-            ))) ;
-            //card bg color
-        $wp_customize->add_section("card-bg", array(
-            "panel"=> "panel_card",
-            "title"=> __(" Post Card Background","dofast"),
-            "priority"=> 8,
-        ));
-        $wp_customize->add_setting("card-bg", array(
-            "default"=> " rgb(0, 0, 0)",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "card-bg_color", array(
-                "label"=> __("Post Card Background color","dofaset"),
-                "section"=> "card-bg",
-                "settings"=> "card-bg",
-            ))) ;
-            //card text color
-        $wp_customize->add_section("card-text", array(
-            "panel"=> "panel_card",
-            "title"=> __(" Post Card Text","dofast"),
-            "priority"=> 9,
-        ));
-        $wp_customize->add_setting("card-text", array(
-            "default"=> " #fff",
-            "transport"=> "refresh",
-        ));
-        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,
-            "card-text_color", array(
-                "label"=> __("Post Card Text color","dofaset"),
-                "section"=> "card-text",
-                "settings"=> "card-text",
-            ))) ;
-
+    //SECTION POST**************
+    //card colors
+    //panel:
+    $wp_customize->add_panel('panel_card', array(
+       'title' => __('Post Card Colors'),
+       'priority' => '2',
+       'description' => 'Theme options',
+       "section" => "card-title",
+   ));
+    $wp_customize->add_section("card-title", array(
+        "title" => __(" Post Card Title gradient", "dofast"),
+        "priority" => 2,
+        "panel"=> "panel_card",
+    ));
+    $wp_customize->add_setting("card-title1", array(
+        "default" => "#04c7c7",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "card-title_color",
+        array(
+            "label" => __("Post Card Title 1", "dofaset"),
+            "section" => "card-title",
+            "settings" => "card-title1",
+        )
+    ));
+    $wp_customize->add_setting("card-title2", array(
+        "default" => "#8224e3",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "card-title_color2",
+        array(
+            "label" => __("Post Card Title 2", "dofaset"),
+            "section" => "card-title",
+            "settings" => "card-title2",
+        )
+    ));
+    $wp_customize->add_section("card-custom", array(
+        "title" => __(" Post Card Colors", "dofast"),
+        "priority" => 2,
+        "panel"=> "panel_card",
+    ));
+    //card bg color
+    $wp_customize->add_setting("card-bg", array(
+        "default" => " rgb(0, 0, 0)",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "card-bg_color",
+        array(
+            "label" => __("Post Card Background color", "dofaset"),
+            "section" => "card-custom",
+            "settings" => "card-bg",
+        )
+    ));
+    //card text color
+    $wp_customize->add_setting("card-text", array(
+        "default" => " #fff",
+        "transport" => "refresh",
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        "card-text_color",
+        array(
+            "label" => __("Post Card Text color", "dofaset"),
+            "section" => "card-custom",
+            "settings" => "card-text",
+        )
+    ));
 }
-add_action("customize_register","dofast_customize_register");
+add_action("customize_register", "dofast_customize_register");
 
-function dofast_customize_css(){
-    ?>
+function dofast_customize_css()
+{
+?>
     <style>
-        body{
-            background-color: <?php echo get_theme_mod( "body_bg", '#fff'); ?> ;
+        body {
+            background-color: <?php echo get_theme_mod("body_bg", '#fff'); ?>;
         }
-        p{
-            color: <?php  echo get_theme_mod( "body_text", '#000'); ?>;
+
+        p {
+            color: <?php echo get_theme_mod("body_text", '#000'); ?>;
         }
-        h1{
-            color: <?php  echo get_theme_mod( "h1_color", '#000'); ?>;
+
+        h1 {
+            color: <?php echo get_theme_mod("h1_color", '#000'); ?>;
         }
-        h2{
-            color: <?php  echo get_theme_mod( "h2_color", '#000'); ?>;
+
+        h2 {
+            color: <?php echo get_theme_mod("h2_color", '#000'); ?>;
         }
-        h3{
-            color: <?php  echo get_theme_mod( "h3_color", '#000'); ?>;
+
+        h3 {
+            color: <?php echo get_theme_mod("h3_color", '#000'); ?>;
         }
-        a{
-            color: <?php  echo get_theme_mod( "link_color", '#04c7c7'); ?>;
+
+        a {
+            color: <?php echo get_theme_mod("link_color", '#04c7c7'); ?>;
         }
-        .card__title{
-            color: <?php  echo get_theme_mod( "card-title", '#04c7c7'); ?>;
+        .link__logo span{
+            color:<?php echo get_theme_mod("tagline_color", '#04c7c7'); ?>;
         }
-        .card__container{
-            background-color: <?php  echo get_theme_mod( "card-bg", ' rgb(0, 0, 0)'); ?> ;
+        .link__logo h2 {
+            background: -webkit-linear-gradient(<?php echo get_theme_mod("logo_color1", ' #1403f7'); ?>, <?php echo get_theme_mod("logo_color2", ' #01ffdd'); ?>);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .card__container p{
-            color:  <?php  echo get_theme_mod( "card-text", ' #fff'); ?>
+        /*card styles*/
+        .card__title {
+            background: -webkit-linear-gradient(<?php echo get_theme_mod("card-title1", ' #1403f7'); ?>, <?php echo get_theme_mod("card-title2", ' #01ffdd'); ?>);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card__container {
+            background-color: <?php echo get_theme_mod("card-bg", ' rgb(0, 0, 0)'); ?>;
+        }
+
+        .card__container p {
+            color: <?php echo get_theme_mod("card-text", ' #fff'); ?>
         }
 
 
     </style>
-    <?php
+<?php
 }
-add_action("wp_head",'dofast_customize_css');
+add_action("wp_head", 'dofast_customize_css');
 
 
 
 //menu support
-function register_my_menus() {
+function register_my_menus()
+{
     register_nav_menus(
-      array(
-        'header-menu' => __( 'Header Menu' ),
-        'footer-menu' => __( 'Footer Menu' )
-       )
-     );
-   }
-   add_action( 'init', 'register_my_menus' );
+        array(
+            'header-menu' => __('Header Menu'),
+            'footer-menu' => __('Footer Menu')
+        )
+    );
+}
+add_action('init', 'register_my_menus');
 
 //Theme Support:
 if (!function_exists('custom_theme_features')) {

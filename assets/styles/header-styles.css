@@ -30,9 +30,6 @@
     flex-direction: column;
   }
   .link__logo h2{
-    background: -webkit-linear-gradient(#1403f7, #01ffdd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin: 0;
 }
 
