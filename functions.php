@@ -12,6 +12,7 @@ function sofidev_files()
     wp_register_style('sofi_main_styles', get_stylesheet_uri(), [], filemtime(get_template_directory() . '/style.css'), 'all');
     wp_register_style('header-styles', get_template_directory_uri() . '/assets/styles/header-styles.css', [], false, 'all');
     wp_register_style('post-card', get_template_directory_uri() . '/assets/styles/post-card.css', [], false, 'all');
+    wp_register_style('single-post', get_template_directory_uri() . '/assets/styles/single-post.css', [], false, 'all');
     wp_register_style('footer-styles', get_template_directory_uri() . '/assets/styles/footer.css', [], false, 'all');
     //Register Scripts
     wp_register_script('main-js', get_template_directory_uri() . '/assets/main.js', [], filemtime(get_template_directory() . '/assets/main.js'), true);
@@ -21,6 +22,7 @@ function sofidev_files()
     wp_enqueue_style('sofi_main_styles');
     wp_enqueue_style('header-styles');
     wp_enqueue_style('post-card');
+    wp_enqueue_style('single-post');
     wp_enqueue_style('footer-styles');
     //Enqueue styles
     wp_enqueue_script('main-js');
@@ -34,21 +36,18 @@ function remove_options_customizer($wp_customize)
 {
     $wp_customize->remove_section('static_front_page'); // Ajustes de portada
     $wp_customize->remove_section('header_image'); // Imagen de cabecera
-    $wp_customize->remove_section('background_image'); // Imagen de fondo
     $wp_customize->remove_section('themes'); // Temas
-    $wp_customize->remove_section('featured_content'); // Contenido destacado
     $wp_customize->remove_section('colors'); // Colores
 
 
     // Secciones específicas de Genesis
     $wp_customize->remove_section('genesis_updates'); // Sección de Actualizaciones
     $wp_customize->remove_section('genesis_adsense'); // Sección de Google Adsense
-    $wp_customize->remove_section('genesis_breadcrumbs'); // Sección Migas de pan
     $wp_customize->remove_section('genesis_comments'); // Sección Comentarios y Referencias
     $wp_customize->remove_section('genesis_scripts'); // Sección Header/Footer Scripts
     $wp_customize->remove_panel('genesis-seo'); // Panel de SEO
 }
-add_action('customize_register', 'remove_options_customizer', 30);
+add_action('customize_register', 'remove_options_customizer');
 //CUSTOMIZER blocks********
 function dofast_customize_register($wp_customize)
 {
@@ -196,7 +195,7 @@ function dofast_customize_register($wp_customize)
         "default" => "#04c7c7",
         "transport" => "refresh",
     ));
- $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize->add_control(new WP_Customize_Color_Control(
         $wp_customize,
         "tagline_color",
         array(
@@ -210,15 +209,15 @@ function dofast_customize_register($wp_customize)
     //card colors
     //panel:
     $wp_customize->add_panel('panel_card', array(
-       'title' => __('Post Card Colors'),
-       'priority' => '2',
-       'description' => 'Theme options',
-       "section" => "card-title",
-   ));
+        'title' => __('Post Card Colors'),
+        'priority' => '2',
+        'description' => 'Theme options',
+        "section" => "card-title",
+    ));
     $wp_customize->add_section("card-title", array(
         "title" => __(" Post Card Title gradient", "dofast"),
         "priority" => 2,
-        "panel"=> "panel_card",
+        "panel" => "panel_card",
     ));
     $wp_customize->add_setting("card-title1", array(
         "default" => "#04c7c7",
@@ -249,7 +248,7 @@ function dofast_customize_register($wp_customize)
     $wp_customize->add_section("card-custom", array(
         "title" => __(" Post Card Colors", "dofast"),
         "priority" => 2,
-        "panel"=> "panel_card",
+        "panel" => "panel_card",
     ));
     //card bg color
     $wp_customize->add_setting("card-bg", array(
@@ -309,15 +308,18 @@ function dofast_customize_css()
         a {
             color: <?php echo get_theme_mod("link_color", '#04c7c7'); ?>;
         }
-        .link__logo span{
-            color:<?php echo get_theme_mod("tagline_color", '#04c7c7'); ?>;
+
+        .link__logo span {
+            color: <?php echo get_theme_mod("tagline_color", '#04c7c7'); ?>;
         }
+
         .link__logo h2 {
             background: -webkit-linear-gradient(<?php echo get_theme_mod("logo_color1", ' #1403f7'); ?>, <?php echo get_theme_mod("logo_color2", ' #01ffdd'); ?>);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         /*card styles*/
         .card__title {
             background: -webkit-linear-gradient(<?php echo get_theme_mod("card-title1", ' #1403f7'); ?>, <?php echo get_theme_mod("card-title2", ' #01ffdd'); ?>);
@@ -333,8 +335,6 @@ function dofast_customize_css()
         .card__container p {
             color: <?php echo get_theme_mod("card-text", ' #fff'); ?>
         }
-
-
     </style>
 <?php
 }
@@ -412,4 +412,23 @@ if (!function_exists('custom_theme_features')) {
         add_theme_support('custom-logo', $defaults);
     }
     add_action('after_setup_theme', 'SofiDev_custom_logo_setup');
+}
+
+//sidebar
+
+add_action( 'widgets_init', 'my_register_sidebars' );
+function my_register_sidebars() {
+	/* Register the 'primary' sidebar. */
+	register_sidebar(
+		array(
+			'id'            => 'primary',
+			'name'          => __( 'Primary Sidebar' ),
+			'description'   => __( 'A short description of the sidebar.' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		)
+	);
+	/* Repeat register_sidebar() code for additional sidebars. */
 }
