@@ -14,8 +14,8 @@ function sofidev_files()
     wp_register_style('post-card', get_template_directory_uri() . '/assets/styles/post-card.css', [], false, 'all');
     wp_register_style('single-post', get_template_directory_uri() . '/assets/styles/single-post.css', [], false, 'all');
     wp_register_style('footer-styles', get_template_directory_uri() . '/assets/styles/footer.css', [], false, 'all');
+    wp_register_style('hero-styles', get_template_directory_uri() . '/assets/styles/hero-section.css', [], false, 'all');
     //Register Scripts
-    wp_register_script('main-js', get_template_directory_uri() . '/assets/main.js', [], filemtime(get_template_directory() . '/assets/main.js'), true);
     wp_register_script('hamburger-js', get_template_directory_uri() . '/assets/controllers/hamburger.js', [], filemtime(get_template_directory() . '/assets/controllers/hamburger.js'), true);
 
     //Enqueue styles
@@ -24,6 +24,7 @@ function sofidev_files()
     wp_enqueue_style('post-card');
     wp_enqueue_style('single-post');
     wp_enqueue_style('footer-styles');
+    wp_enqueue_style('hero-styles');
     //Enqueue styles
     wp_enqueue_script('main-js');
     wp_enqueue_script('hamburger-js');
@@ -305,10 +306,16 @@ function dofast_customize_css()
             color: <?php echo get_theme_mod("h3_color", '#000'); ?>;
         }
 
-        a {
+        .header__menu-link, a  {
             color: <?php echo get_theme_mod("link_color", '#04c7c7'); ?>;
         }
-
+        /* Boton menu hamburguesa */
+        .hamburger-inner, .hamburger-inner:after, .hamburger-inner:before  {
+            background: <?php echo get_theme_mod("link_color", '#04c7c7'); ?>;
+        }
+        .hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner:after, .hamburger.is-active .hamburger-inner:before  {
+            background: <?php echo get_theme_mod("link_color", '#04c7c7'); ?>;
+        }
         .link__logo span {
             color: <?php echo get_theme_mod("tagline_color", '#04c7c7'); ?>;
         }
@@ -432,3 +439,14 @@ function my_register_sidebars() {
 	);
 	/* Repeat register_sidebar() code for additional sidebars. */
 }
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+	return 6;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );

@@ -21,7 +21,12 @@
     </div>
     <nav class="header__nav__menu panel" id="panel">
                 <ul>
-                    <li class="menu__list"><a href="#home" class="header__menu-link"><?php wp_nav_menu( array( 'container_class' => 'main-nav', 'theme_location' => 'header-menu' ) ); ?></a></li>
+                    <?php
+                    if(!is_front_page()){
+                        echo "<li class='menu__list'><a href='/' class='header__menu-link'>Home</a></li>";
+                    }
+                    ?>
+                    <li class="menu__list"><?php wp_nav_menu( array( 'container_class' => 'main-nav', 'theme_location' => 'header-menu' ) ); ?></li>
 
                 </ul>
             </nav>

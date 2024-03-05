@@ -3,10 +3,11 @@
     justify-content: center;
     align-items: center;
     gap: 3rem;
-    height: 100dvh;
+    min-height: 100dvh;
     flex-wrap: wrap;
     width: 100%;
     padding-top: 3rem;
+    height: auto;
 }
 .card__container{
     display: flex;
@@ -22,22 +23,25 @@
     filter: drop-shadow(0 0 0.66rem rgb(108, 108, 108));
     overflow: hidden;
     transition: transform .3s ease-in-out;
+    overflow: hidden;
 }
 .card__container:hover{
-    filter: drop-shadow(0 0 0.40rem rgba(103, 252, 210, 0.784));
+    filter: drop-shadow(0 0 0.40rem rgba(217, 217, 217, 0.784));
+}
+.img__container{
+    overflow: hidden;
 }
 .card__container:hover img{
-    width: 180%;
     object-fit: cover;
     overflow: hidden;
     filter: saturate(28%);
-    transition: width 1s ease-in-out;
+    transform: scale(1.2);
+    transition:  1s ease-in-out;
 }
-.card__container img{
+.img__container img{
     width: 439px;
     height: 25dvh;
     object-fit: cover;
-    overflow: hidden;
 }
 .card__title{
     font-size: 1.7rem;

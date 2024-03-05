@@ -1,7 +1,11 @@
 <a class="card__container" href="<?php the_permalink(); ?> ">
-  <?php the_post_thumbnail();?>
+ <div class="img__container">
+   <?php the_post_thumbnail(); ?>
+  </div>
   <h2 class="card__title">
     <?php the_title(); ?>
   </h2>
-    <?php the_excerpt(); ?>
+  <p>
+    <?php echo wp_trim_words(get_the_excerpt(), 13); ?>
+  </p>
 </a>

@@ -85,10 +85,3 @@ code{
   align-self: center;
   color: rgb(2, 182, 2);
 }
-.header__menu-link{
-  font-size: 1.7rem;
-  color: rgb(255, 0, 0)!important;
-}
-.header__menu-link :hover{
-  color: rgba(43, 255, 28, 0.844)!important;
-}

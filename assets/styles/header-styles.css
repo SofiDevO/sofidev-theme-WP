@@ -80,7 +80,7 @@
 
   .header__nav__menu ul{
     display: flex;
-    gap: 2.5rem;
+    gap: 1.5rem;
     align-items: center;
     width: auto;
     padding: 0;
@@ -121,7 +121,7 @@
       /* transform: translate(-100%, 0); */
       /* transform: translate(0, 100%); */
     }
-    .header__menu-link{
+    .header__menu-link, .menu__list a{
       font-size: 2.4rem;
     }
 
