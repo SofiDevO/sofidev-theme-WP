@@ -1,10 +1,11 @@
+
+
 .hero {
   display: flex;
   align-items: center;
-
   padding: 1rem 3rem;
   height: auto;
-  min-height: 100dvh;
+  min-height: 85dvh;
   justify-content: center;
 }
 .hero__container {
@@ -23,15 +24,24 @@
 }
 .text__container h1 {
   font-size: 6rem;
-  font-weight: 500;
   margin: 0;
+  font-weight: 600;
+}
+.text__container p {
+  font-size: 2rem;
 }
 
 .hero img {
   width: 100%;
-  max-width: 40rem;
+  max-width: 35rem;
   height: auto;
+  border-radius: 50%;
 }
+.hero img:hover {
+  filter:  drop-shadow(5px 5px 10px #404040);
+}
+
+
 
 @media screen and (max-width: 768px) {
   .hero {

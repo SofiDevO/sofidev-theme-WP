@@ -14,7 +14,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 20%;
+    width: 84%;
+    max-width: 32rem;
     min-width: 25rem;
     height: 40dvh;
     padding: 1rem 2rem;
